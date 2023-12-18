@@ -21,4 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Esse projeto utiliza a gem mailcatcher para envio de email
+* instalar basta executar bin/setup dentro do projeto
+* Para executar basta digitar na linha de comando mailcatcher
+* Para mais informações acesse: https://mailcatcher.me/

@@ -1,0 +1,40 @@
+
+Index</br>
+<%= link_to 'Novo Munícipe', new_municipe_path, class: 'btn btn-primary' %></br>
+<hr>
+</br>
+<% @municipes.each do |municipe| %>
+<%= link_to 'Editar', edit_municipe_path(municipe), class: 'btn btn-primary' %></br>
+Nome: <%= municipe.nome_completo%></br>
+CPF: <%= municipe.cpf%></br>
+CNS: <%= municipe.cns%></br>
+Data de Nascimento: <%= municipe.data_nascimento%></br>
+Email: <%= municipe.email%></br>
+Telefone: <%= municipe.telefone%></br>
+Status: <%= municipe.nome_completo%></br>
+<br/>
+Endereço:</br>
+<% if municipe.endereco %>
+    CEP: <%= municipe.endereco.cep %></br>
+    Logradouro: <%= municipe.endereco.logradouro %></br>
+    Complemento: <%= municipe.endereco.complemento %></br>
+    Bairro: <%= municipe.endereco.complemento %></br>
+    Cidade: <%= municipe.endereco.complemento %></br>
+    UF: <%= municipe.endereco.complemento %></br>
+    Código IBGE: <%= municipe.endereco.codigo_ibege %></br>
+<% else %>
+    Sem endereço
+<% end %>
+
+<% if municipe.images.attached? %>
+  <h2>Imagens:</h2>
+  <div>
+    <% municipe.images.each do |image| %>
+      <%= image_tag image, width: '300px' %>
+    <% end %>
+  </div>
+<% end %>
+<hr>
+
+<% end %>
+

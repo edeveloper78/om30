@@ -1,0 +1,66 @@
+<% if flash[:error]%>
+    <%=flash[:error]%> 
+<%end%>
+
+
+<%= form_with model: @municipe do |form| %>
+      <%= form.label :nome_completo, class: 'form-label' %>
+      <%= form.text_field :nome_completo, class: 'form-control' %>
+
+
+  <%= form.label :cpf, "CPF" %>
+  <%= form.text_field :cpf %>  
+  
+  <%= form.label :cns, "CNS" %>
+  <%= form.text_field :cns %>  
+  
+  <%= form.label :data_nascimento, "Data de data_nascimento" %>
+  <%= form.text_field :data_nascimento %>  
+
+  <%= form.label :email, "Email" %>
+  <%= form.text_field :email %>  
+  
+  <%= form.label :telefone, "telefone" %>
+  <%= form.text_field :telefone %>  
+  
+  <%= form.label :status, "Status" %>
+  <%= form.text_field :status %>
+    
+  <%= form.fields_for :endereco do |endereco_fields| %>
+    <%= endereco_fields.label :cep %>
+    <%= endereco_fields.text_field :cep, required: true, maxlength: 5, size: 30 %>
+
+    <%= endereco_fields.label :logradouro %>
+    <%= endereco_fields.text_field :logradouro, required: true  %>
+
+    <%= endereco_fields.label :complemento %>
+    <%= endereco_fields.text_field :complemento, required: true  %>
+    
+    <%= endereco_fields.label :bairro %>
+    <%= endereco_fields.text_field :bairro, required: true  %>
+
+    <%= endereco_fields.label :cidade %>
+    <%= endereco_fields.text_field :cidade, required: true  %>
+
+    <%= endereco_fields.label :uf %>
+    <%= endereco_fields.text_field :uf, required: true  %>
+
+    <%= endereco_fields.label :codigo_ibege %>
+    <%= endereco_fields.text_field :codigo_ibege, required: true  %>
+
+<% end %>
+    <%= form.file_field :images, multiple: true %>
+  
+
+
+  <%= form.submit 'Salvar' %>
+<% end %>
+<script>
+$(document).ready(function() {
+  $('#municipe_telefone').mask('+00 (00) 000000000');
+  $('#municipe_endereco_attributes_cep').mask('00.000-000')
+  $('#municipe_data_nascimento').mask('00/00/0000')
+  $('#municipe_cpf').mask('00000000000')
+  $('#municipe_cns').mask('000000000000000')
+});
+</script>
